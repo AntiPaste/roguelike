@@ -17,7 +17,7 @@ public class Screen {
 	private int windowHeight = 768;
 	private JFrame window;
 	private Container container;
-	private JLayeredPane enemyMaps;
+	private JPanel enemyMaps;
 
 	public Screen() {
 		this.window = new JFrame("Roguelike");
@@ -29,14 +29,20 @@ public class Screen {
 
 		this.container = this.window.getContentPane();
 
-		this.enemyMaps = new JLayeredPane();
-		GridLayout grid = new GridLayout(2, 2);
+		this.enemyMaps = new JPanel();
+		GridBagConstraints grid = new GridBagConstraints();
 
-		this.enemyMaps.setLayout(grid);
-		this.enemyMaps.add(new EnemyMap());
-		this.enemyMaps.add(new EnemyMap());
-		this.enemyMaps.add(new EnemyMap());
-		this.enemyMaps.add(new EnemyMap());
+		grid.gridx = 0;
+		grid.gridy = 0;
+
+		this.enemyMaps.setLayout(new GridBagLayout());
+		this.enemyMaps.add(new EnemyMap().getButton(), grid);
+		grid.gridy++;
+		this.enemyMaps.add(new EnemyMap().getButton(), grid);
+		grid.gridy++;
+		this.enemyMaps.add(new EnemyMap().getButton(), grid);
+		grid.gridy++;
+		this.enemyMaps.add(new EnemyMap().getButton(), grid);
 
 		this.container.add(this.enemyMaps, BorderLayout.CENTER);
 		this.window.setContentPane(this.container);
