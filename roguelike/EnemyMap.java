@@ -11,13 +11,16 @@ import javax.swing.*;
  *
  * @author Frozen
  */
-public class EnemyMap extends JPanel {
+public class EnemyMap {
 
 	public EnemyMap() {
+
+	}
+
+	public JButton getButton() {
 		JButton button = new JButton("Zoom");
 		button.setPreferredSize(new Dimension(32, 32));
-		
-		add(button);
+		return button;
 	}
 
 }
