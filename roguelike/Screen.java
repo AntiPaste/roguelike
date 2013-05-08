@@ -13,11 +13,11 @@ import javax.swing.*;
  */
 public class Screen {
 
-	private int windowWidth = 640;
-	private int windowHeight = 480;
+	private int windowWidth = 1024;
+	private int windowHeight = 768;
 	private JFrame window;
-	private Container contentPane;
-	private JLayeredPane pane;
+	private Container container;
+	private JLayeredPane enemyMaps;
 
 	public Screen() {
 		this.window = new JFrame("Roguelike");
@@ -27,14 +27,19 @@ public class Screen {
 		this.window.setResizable(false);
 		this.window.setVisible(true);
 
-		this.contentPane = this.window.getContentPane();
+		this.container = this.window.getContentPane();
 
-		this.pane = new JLayeredPane();
-		this.pane.setLayout(new BoxLayout(this.pane, BoxLayout.PAGE_AXIS));
-		this.pane.add(new GamePanel());
+		this.enemyMaps = new JLayeredPane();
+		GridLayout grid = new GridLayout(2, 2);
 
-		this.contentPane.add(this.pane, BorderLayout.CENTER);
-		this.window.setContentPane(this.contentPane);
+		this.enemyMaps.setLayout(grid);
+		this.enemyMaps.add(new EnemyMap());
+		this.enemyMaps.add(new EnemyMap());
+		this.enemyMaps.add(new EnemyMap());
+		this.enemyMaps.add(new EnemyMap());
+
+		this.container.add(this.enemyMaps, BorderLayout.CENTER);
+		this.window.setContentPane(this.container);
 	}
 
 }
