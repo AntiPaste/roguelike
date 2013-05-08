@@ -4,7 +4,7 @@
  */
 package roguelike;
 
-
+import java.util.*;
 
 /**
  *
@@ -22,8 +22,12 @@ public class Roguelike {
 	}
 
 	public void run() {
-		this.screen = new Screen(6);
-		this.screen.run();
+		List<EnemyMap> enemyMaps = new ArrayList<EnemyMap>();
+		for (int i = 0; i < 4; i++)
+			enemyMaps.add(new EnemyMap());
+
+		this.screen = new Screen();
+		this.screen.showEnemyMaps(enemyMaps);
 	}
 
 }
