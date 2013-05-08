@@ -12,15 +12,18 @@ package roguelike;
  */
 public class Roguelike {
 
+	private Screen screen;
+
 	/**
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		new Roguelike();
+		new Roguelike().run();
 	}
 
-	public Roguelike() {
-		new Screen();
+	public void run() {
+		this.screen = new Screen(6);
+		this.screen.run();
 	}
 
 }
