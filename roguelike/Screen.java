@@ -14,63 +14,64 @@ import javax.swing.*;
  */
 public class Screen {
 
-	private int windowWidth = 1024;
-	private int windowHeight = 768;
-
 	private JFrame window;
 	private Container container;
+	private Map map;
+
+	private JPanel gamePanel;
 
 	public Screen() {
 		// Create master JFrame
 		this.window = new JFrame("Roguelike");
 		this.window.setDefaultCloseOperation(this.window.EXIT_ON_CLOSE);
-		this.window.setSize(this.windowWidth, this.windowHeight);
+		this.window.setSize(Settings.windowWidth, Settings.windowHeight);
 		this.window.setLocationRelativeTo(null);
 		this.window.setResizable(false);
 		this.window.setVisible(true);
 
 		// Store JFrame content pane
-		this.container = this.window.getContentPane();
-		this.container.setLayout(null);
-	}
-
-	public void refresh() {
+		this.container = new JLayeredPane();
+		this.container.setBounds(0, 0, Settings.windowWidth, Settings.windowHeight);
 		this.window.setContentPane(this.container);
 	}
 
-	public void showEnemyMaps(List<EnemyMap> enemyMaps) {
-		int enemies = enemyMaps.size();
-		int columns = (int) Math.ceil((double) enemies / 2);
-		int enemyMapsWidth = columns * 32;
+	public JFrame getWindow() {
+		return this.window;
+	}
 
-		// Create enemyMaps panel
-		JPanel enemyMapsPanel = new JPanel();
-		enemyMapsPanel.setLayout(new GridBagLayout());
-		enemyMapsPanel.setBounds(this.windowWidth - enemyMapsWidth, 0, enemyMapsWidth, 64);
+	public void setMap(Map map) {
+		this.map = map;
+	}
 
-		// Initialise enemyMapsGrid
-		GridBagConstraints enemyMapsGrid = new GridBagConstraints();
-
-		// Add in EnemyMaps using two rows
-		for (int row = 0; row < 2; row++) {
-			enemyMapsGrid.gridx = 0;
-			enemyMapsGrid.gridy = row;
-
-			for (int column = 0; column < columns; column++) {
-				// If we have an odd number of enemies and we're the first column of the second row
-				if (enemies % 2 == 1 && row == 1 && column == 0) {
-					enemyMapsGrid.gridx++;
-					continue;
-				}
-
-				enemyMapsPanel.add(new EnemyMap(), enemyMapsGrid);
-				enemyMapsGrid.gridx++;
-			}
+	public void redrawMap() {
+		if (this.gamePanel != null) {
+			this.gamePanel.setVisible(false);
+			this.gamePanel.removeAll();
+			this.gamePanel = null;
 		}
 
-		// Take us there!
-		this.container.add(enemyMapsPanel);
-		this.refresh();
+		this.gamePanel = new JPanel();
+		this.gamePanel.setLayout(new GridBagLayout());
+		this.gamePanel.setBounds(128, 96, Settings.windowWidth - 256, Settings.windowHeight - 192);
+
+		GridBagConstraints gameGrid = new GridBagConstraints();
+		gameGrid.anchor = GridBagConstraints.FIRST_LINE_START;
+		gameGrid.weightx = 1.0;
+		gameGrid.weighty = 1.0;
+		gameGrid.gridx = 0;
+		gameGrid.gridy = 0;
+
+		for (Block block : this.map.getBlocks()) {
+			gameGrid.gridx = block.getPosX();
+			gameGrid.gridy = block.getPosY();
+
+			block.setLayout(null);
+			block.setPreferredSize(new Dimension(Settings.blockSize, Settings.blockSize));
+
+			this.gamePanel.add(block, gameGrid);
+		}
+
+		this.container.add(this.gamePanel, JLayeredPane.DEFAULT_LAYER);
 	}
 
 	public void showChat() {
