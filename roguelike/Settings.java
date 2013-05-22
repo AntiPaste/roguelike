@@ -9,6 +9,8 @@ package roguelike;
  * @author Frozen
  */
 public final class Settings {
+	public static final int networkPort = 4444;
+	
 	public static final int windowWidth = 1024;
 	public static final int windowHeight = 768;
 

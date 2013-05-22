@@ -17,7 +17,6 @@ public class Screen {
 	private JFrame window;
 	private Container container;
 	private Map map;
-
 	private JPanel gamePanel;
 
 	public Screen() {
@@ -61,6 +60,15 @@ public class Screen {
 		gameGrid.gridx = 0;
 		gameGrid.gridy = 0;
 
+		Player player = this.map.getPlayer();
+		gameGrid.gridx = player.getPosX();
+		gameGrid.gridy = player.getPosY();
+
+		player.setLayout(null);
+		player.setPreferredSize(new Dimension(Settings.blockSize, Settings.blockSize));
+
+		this.gamePanel.add(player, gameGrid);
+
 		for (Block block : this.map.getBlocks()) {
 			gameGrid.gridx = block.getPosX();
 			gameGrid.gridy = block.getPosY();
@@ -77,5 +85,4 @@ public class Screen {
 	public void showChat() {
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
-
 }

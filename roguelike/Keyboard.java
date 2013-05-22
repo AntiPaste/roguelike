@@ -6,6 +6,7 @@ package roguelike;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 /**
  *
@@ -44,6 +45,15 @@ public class Keyboard implements KeyListener {
 
 			case KeyEvent.VK_RIGHT:
 				this.map.moveRelative(1, 0);
+				break;
+
+			case KeyEvent.VK_Q:
+				try {
+					this.roguelike.startServer();
+				} catch (IOException e) {
+					System.out.println("[!] Server failure");
+					System.exit(-1);
+				}
 				break;
 		}
 	}

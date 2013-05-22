@@ -27,27 +27,56 @@ public class Map {
 	}
 
 	public void populateMap() {
+		int map[][] = {
+			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+			{ 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
+			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+		};
+
 		this.blocks = new ArrayList<Block>();
 
 		for (int x = 0; x < 32; x++) {
 			for (int y = 0; y < 24; y++) {
-				if (x == 0 || y == 0 || x == 31 || y == 23) {
+				if (map[y][x] == Block.WALL) {
 					this.blocks.add(new Wall(x, y));
-					continue;
+				} else if (map[y][x] == Block.GROUND) {
+					this.blocks.add(new Ground(x, y));
+				} else if (map[y][x] == Block.PLAYER) {
+					this.player = new Player(x, y, true);
+					this.blocks.add(new Ground(x, y));
 				}
-
-				this.blocks.add(new Ground(x, y));
 			}
 		}
-
-		this.player = new Player(2, 2);
-		this.blocks.add(this.player);
-		this.blocks.remove(50);
 
 		this.screen.redrawMap();
 	}
 
-	public Block getBlockAt(int x, int y) {
+	public Block getBlockAt(int x, int y, boolean ignorePlayer) {
+		if (!ignorePlayer && this.player.getPosX() == x && this.player.getPosY() == y) {
+			return this.player;
+		}
+
 		for (Block block : this.blocks) {
 			if (block.getPosX() == x && block.getPosY() == y) {
 				return block;
@@ -55,6 +84,15 @@ public class Map {
 		}
 
 		return null;
+	}
+
+	public Block getBlockAt(int x, int y) {
+		return this.getBlockAt(x, y, true);
+	}
+
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
+		this.screen.redrawMap();
 	}
 
 	public List<Block> getBlocks() {
@@ -78,23 +116,18 @@ public class Map {
 			return;
 		}
 
-		if (this.getBlockAt(x, y).getType() == Block.WALL) {
+		Block moveTo = this.getBlockAt(x, y);
+		Block moveFrom = this.getBlockAt(this.player.getPosX(), this.player.getPosY());
+		moveFrom.setVisibility(true);
+
+		if (moveTo.getType() == Block.WALL) {
+			moveTo.setVisibility(true);
+			this.screen.redrawMap();
 			return;
 		}
 
-		int posX = this.player.getPosX();
-		int posY = this.player.getPosY();
-
-		this.blocks.remove(this.getBlockAt(posX, posY));
-		this.blocks.add(new Ground(posX, posY));
-
-		this.blocks.remove(this.getBlockAt(x, y));
-
 		this.player.setPosX(x);
 		this.player.setPosY(y);
-
-		this.blocks.remove(this.player);
-		this.blocks.add(this.player);
 
 		this.screen.redrawMap();
 	}

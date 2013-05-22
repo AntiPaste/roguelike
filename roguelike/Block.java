@@ -18,6 +18,7 @@ public abstract class Block extends JPanel {
 
 	private int x;
 	private int y;
+	private boolean visible = false;
 
 	public Block(int x, int y) {
 		this.x = x;
@@ -38,6 +39,14 @@ public abstract class Block extends JPanel {
 
 	public int getPosY() {
 		return this.y;
+	}
+
+	public void setVisibility(boolean visible) {
+		this.visible = visible;
+	}
+
+	public boolean getVisibility() {
+		return this.visible;
 	}
 
 	public abstract int getType();

@@ -25,6 +25,11 @@ public class Wall extends Block {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+
+		if (!this.getVisibility()) {
+			return;
+		}
+		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}

@@ -14,9 +14,17 @@ import javax.swing.BorderFactory;
  */
 public class Player extends Block {
 
+	private boolean isPlayer;
+
 	public Player(int x, int y) {
+		this(x, y, false);
+	}
+
+	public Player(int x, int y, boolean isPlayer) {
 		super(x, y);
 
+		this.isPlayer = isPlayer;
+		this.setVisibility(true);
 		this.setBorder(BorderFactory.createLineBorder(Color.black, 1));
 	}
 
@@ -28,7 +36,12 @@ public class Player extends Block {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.RED);
+
+		if (!this.getVisibility()) {
+			return;
+		}
+
+		g.setColor((this.isPlayer ? Color.RED : Color.GREEN));
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 

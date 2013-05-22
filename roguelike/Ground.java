@@ -16,8 +16,14 @@ public class Ground extends Block {
 
 	public Ground(int x, int y) {
 		super(x, y);
-		
-		this.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+
+
+	}
+
+	@Override
+	public void setVisibility(boolean visibility) {
+		super.setVisibility(visibility);
+		this.setBorder((visibility ? BorderFactory.createLineBorder(Color.black, 1) : null));
 	}
 
 	@Override
@@ -28,6 +34,11 @@ public class Ground extends Block {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+
+		if (!this.getVisibility()) {
+			return;
+		}
+
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
