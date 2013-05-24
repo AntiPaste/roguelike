@@ -8,22 +8,16 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.BorderFactory;
 
-/**
- *
- * @author Frozen
- */
 public class Ground extends Block {
 
 	public Ground(int x, int y) {
 		super(x, y);
-
-
 	}
 
 	@Override
 	public void setVisibility(boolean visibility) {
 		super.setVisibility(visibility);
-		this.setBorder((visibility ? BorderFactory.createLineBorder(Color.black, 1) : null));
+		setBorder(visibility ? BorderFactory.createLineBorder(Color.BLACK, 1) : null);
 	}
 
 	@Override
@@ -42,5 +36,4 @@ public class Ground extends Block {
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
-
 }

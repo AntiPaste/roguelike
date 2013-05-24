@@ -6,16 +6,12 @@ package roguelike;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
 
-/**
- *
- * @author Frozen
- */
 public class Keyboard implements KeyListener {
 
 	private Roguelike roguelike;
 	private Map map;
+	private Client client;
 
 	public Keyboard(Roguelike roguelike) {
 		this.roguelike = roguelike;
@@ -23,39 +19,38 @@ public class Keyboard implements KeyListener {
 	}
 
 	@Override
-	public void keyTyped(KeyEvent event) {}
+	public void keyTyped(KeyEvent event) {
+	}
 
 	@Override
-	public void keyPressed(KeyEvent event) {}
+	public void keyPressed(KeyEvent event) {
+	}
 
 	@Override
 	public void keyReleased(KeyEvent event) {
+		int x = this.map.getPlayer().getPosX();
+		int y = this.map.getPlayer().getPosY();
+
+		if (this.client == null) {
+			this.client = this.roguelike.getClient();
+		}
+
 		switch (event.getKeyCode()) {
 			case KeyEvent.VK_UP:
-				this.map.moveRelative(0, -1);
-				break;
-
-			case KeyEvent.VK_DOWN:
-				this.map.moveRelative(0, 1);
-				break;
-
-			case KeyEvent.VK_LEFT:
-				this.map.moveRelative(-1, 0);
+				this.client.send(String.format("move=%d:%d", x, y - 1));
 				break;
 
 			case KeyEvent.VK_RIGHT:
-				this.map.moveRelative(1, 0);
+				this.client.send(String.format("move=%d:%d", x + 1, y));
 				break;
 
-			case KeyEvent.VK_Q:
-				try {
-					this.roguelike.startServer();
-				} catch (IOException e) {
-					System.out.println("[!] Server failure");
-					System.exit(-1);
-				}
+			case KeyEvent.VK_DOWN:
+				this.client.send(String.format("move=%d:%d", x, y + 1));
+				break;
+
+			case KeyEvent.VK_LEFT:
+				this.client.send(String.format("move=%d:%d", x - 1, y));
 				break;
 		}
 	}
-
 }

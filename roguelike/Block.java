@@ -6,16 +6,11 @@ package roguelike;
 
 import javax.swing.JPanel;
 
-/**
- *
- * @author Frozen
- */
 public abstract class Block extends JPanel {
 
 	public static final int WALL = 1;
 	public static final int GROUND = 2;
 	public static final int PLAYER = 3;
-
 	private int x;
 	private int y;
 	private boolean visible = false;
@@ -50,5 +45,4 @@ public abstract class Block extends JPanel {
 	}
 
 	public abstract int getType();
-
 }

@@ -7,10 +7,6 @@ package roguelike;
 import java.awt.Color;
 import java.awt.Graphics;
 
-/**
- *
- * @author Frozen
- */
 public class Wall extends Block {
 
 	public Wall(int x, int y) {
@@ -29,9 +25,8 @@ public class Wall extends Block {
 		if (!this.getVisibility()) {
 			return;
 		}
-		
+
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
-
 }

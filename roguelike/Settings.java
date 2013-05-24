@@ -15,9 +15,11 @@ public final class Settings {
 	public static final int windowHeight = 768;
 
 	public static final int blockSize = 24;
-
-	public static final int gridWidth = Settings.windowWidth / Settings.blockSize;
-	public static final int gridHeight = Settings.windowHeight / Settings.blockSize;
+	
+	public static final int gridHorizontalPadding = 128;
+	public static final int gridVerticalPadding = 96;
+	public static final int gridWidth = (Settings.windowWidth - Settings.gridHorizontalPadding * 2) / Settings.blockSize;
+	public static final int gridHeight = (Settings.windowHeight - Settings.gridVerticalPadding * 2) / Settings.blockSize;
 
 	public static final int enemyMapWidth = 32;
 	public static final int enemyMapHeight = 32;

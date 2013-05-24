@@ -4,14 +4,14 @@
  */
 package roguelike;
 
-import java.awt.*;
-import java.util.List;
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 
-/**
- *
- * @author Frozen
- */
 public class Screen {
 
 	private JFrame window;
@@ -20,15 +20,14 @@ public class Screen {
 	private JPanel gamePanel;
 
 	public Screen() {
-		// Create master JFrame
 		this.window = new JFrame("Roguelike");
 		this.window.setDefaultCloseOperation(this.window.EXIT_ON_CLOSE);
 		this.window.setSize(Settings.windowWidth, Settings.windowHeight);
 		this.window.setLocationRelativeTo(null);
 		this.window.setResizable(false);
 		this.window.setVisible(true);
+		this.window.setFocusable(true);
 
-		// Store JFrame content pane
 		this.container = new JLayeredPane();
 		this.container.setBounds(0, 0, Settings.windowWidth, Settings.windowHeight);
 		this.window.setContentPane(this.container);
@@ -51,23 +50,24 @@ public class Screen {
 
 		this.gamePanel = new JPanel();
 		this.gamePanel.setLayout(new GridBagLayout());
-		this.gamePanel.setBounds(128, 96, Settings.windowWidth - 256, Settings.windowHeight - 192);
+		this.gamePanel.setBounds(Settings.gridHorizontalPadding, Settings.gridVerticalPadding, Settings.windowWidth - Settings.gridHorizontalPadding * 2, Settings.windowHeight - Settings.gridVerticalPadding * 2);
 
 		GridBagConstraints gameGrid = new GridBagConstraints();
-		gameGrid.anchor = GridBagConstraints.FIRST_LINE_START;
+		gameGrid.anchor = GridBagConstraints.FIRST_LINE_START;;
 		gameGrid.weightx = 1.0;
 		gameGrid.weighty = 1.0;
 		gameGrid.gridx = 0;
 		gameGrid.gridy = 0;
 
-		Player player = this.map.getPlayer();
-		gameGrid.gridx = player.getPosX();
-		gameGrid.gridy = player.getPosY();
+		for (Player player : this.map.getPlayers().values()) {
+			gameGrid.gridx = player.getPosX();
+			gameGrid.gridy = player.getPosY();
 
-		player.setLayout(null);
-		player.setPreferredSize(new Dimension(Settings.blockSize, Settings.blockSize));
+			player.setLayout(null);
+			player.setPreferredSize(new Dimension(Settings.blockSize, Settings.blockSize));
 
-		this.gamePanel.add(player, gameGrid);
+			this.gamePanel.add(player, gameGrid);
+		}
 
 		for (Block block : this.map.getBlocks()) {
 			gameGrid.gridx = block.getPosX();
