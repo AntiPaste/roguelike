@@ -35,7 +35,7 @@ public class Client implements Runnable {
 			System.out.println("[!] Invalid hostname");
 			System.exit(-1);
 		} catch (IOException e) {
-			System.out.println("[!] IO failed");
+			System.out.println("[!] Unable to connect to server");
 			System.exit(-1);
 		}
 
