@@ -4,6 +4,8 @@
  */
 package roguelike;
 
+import java.util.Scanner;
+
 public class Roguelike {
 
 	private Screen screen;
@@ -12,8 +14,19 @@ public class Roguelike {
 	private Client client;
 
 	public static void main(String[] args) {
-		new Roguelike().run();
-		//new Server.start();
+		Scanner scanner = new Scanner(System.in);
+		String input;
+		
+		System.out.print("(S)erver or (C)lient: ");
+		input = scanner.nextLine().toLowerCase();
+		
+		if (input.equals("s")) {
+			new Server().start();
+		} else if (input.equals("c")) {
+			new Roguelike().run();
+		} else {
+			System.out.println("[!] Invalid choice");
+		}
 	}
 
 	public void run() {
